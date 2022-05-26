@@ -17,12 +17,13 @@ const inputBtn = document.getElementById("input-btn")
     }
     ulEl.innerHTML = listItems
 }
-const tabs = [
-  {URL: "https://frontendsimplified.com/javascript/crashcourse"}
-]
 const tabBtnEL = document.getElementById("tabBtn")
 tabBtnEL.addEventListener("click",function(){
-console.log(tabs[0].URL)
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    myLeads.push(tabs[0].url);
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+    render(myLeads)
+ });
 }
 )
    deleteBtn.addEventListener("dblclick", function() {

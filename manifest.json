@@ -4,6 +4,9 @@
     "name": "leads tracker",
     "action":{
         "default_popup": "index.html",
-        "default_icon":"icon2.jpeg"       
-    }
+        "default_icon": "icon.png"
+    },
+    "permissions":[
+        "tabs"
+    ]
 }
