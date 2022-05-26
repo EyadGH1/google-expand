@@ -3,24 +3,13 @@ const inputBtn = document.getElementById("input-btn")
   const inputEl = document.getElementById("input")
   const ulEl = document.getElementById("ul-el")
   const leadsFromLoacalStorage = JSON.parse(localStorage.getItem("myLeads"))
-  console.log(leadsFromLoacalStorage)
-  let x = Boolean(leadsFromLoacalStorage)
-  if(leadsFromLoacalStorage){
-  myLeads = leadsFromLoacalStorage
-  renderItems()}
-  inputBtn.addEventListener("click",function(){
-    myLeads.push(inputEl.value);
-    inputEl.value = ""
-    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
-    renderItems()
-    console.log(localStorage.getItem("myLeads"))
-})
-function renderItems(){
+   const deleteBtn = document.getElementById("delete-btn")
+   function render(leads){
     let listItems = ""
-    for(i = 0; i < myLeads.length; i++){
+    for(i = 0; i < leads.length; i++){
       listItems += `
       <li>
-      <a href='${ myLeads[i]}' target = '_blank'>
+      <a href='${ leads[i]}' target = '_blank'>
       ${ myLeads[i]} 
        </a> 
       </li>
@@ -28,3 +17,28 @@ function renderItems(){
     }
     ulEl.innerHTML = listItems
 }
+const tabs = [
+  {URL: "https://frontendsimplified.com/javascript/crashcourse"}
+]
+const tabBtnEL = document.getElementById("tabBtn")
+tabBtnEL.addEventListener("click",function(){
+console.log(tabs[0].URL)
+}
+)
+   deleteBtn.addEventListener("dblclick", function() {
+     localStorage.clear()
+     myLeads = []
+     render(myLeads)
+   });
+  console.log(leadsFromLoacalStorage)
+  let x = Boolean(leadsFromLoacalStorage)
+  if(leadsFromLoacalStorage){
+  myLeads = leadsFromLoacalStorage
+  render(myLeads)}
+  inputBtn.addEventListener("click",function(){
+    myLeads.push(inputEl.value);
+    inputEl.value = ""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+    render(myLeads)
+    console.log(localStorage.getItem("myLeads"))
+})
