@@ -12,17 +12,21 @@ input{
 border:1px solid #5f9341 ;
 width: 90%;;
 margin-bottom: 4px;
-height: 40px;
 margin-top: 5px;
 padding: 0 10px;
+height: 34px;
+height: 40px;
+display: flex;
+flex-direction: column;
 }
 button{
-    
+    width: 24%;
     background-color: #5f9341;
     color: white;
     border: none;
     font-weight: bold;
     padding: 10px 20px;
+    height: 60px;
 }
  #delete-btn:active,button:active{
     opacity: 0.5;
@@ -40,8 +44,12 @@ li{
  li a{
     color: #5f9341;
 }
-#delete-btn{
+#delete-btn, #delete1-btn{
     background-color: white;
     color: #5f9341;
     border: 1px solid #5f9341;
+}
+#buttons{
+    display: flex;
+    justify-content: space-between;
 }
